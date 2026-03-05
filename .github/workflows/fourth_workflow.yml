@@ -1,0 +1,13 @@
+name: FourthWorkflow
+on:
+  workflow_run:
+    workflows: [ThirdWorkflow]
+    types:
+      - completed    
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List files
+        run: echo "Hello"
