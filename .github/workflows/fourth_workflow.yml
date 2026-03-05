@@ -6,8 +6,15 @@ on:
       - completed    
 
 jobs:
-  run-first-command:
+  success_command:
     runs-on: ubuntu-latest
+    if: ${{github.event.workflow_run.conclusion == 'success'}}
     steps:
-      - name: List files
-        run: echo "Hello"
+      - name: For success
+        run: echo "Success! Its good"
+  failure_command:
+    runs-on: ubuntu-latest
+    if: ${{github.event.workflow_run.conclusion == 'failure'}}
+    steps:
+      - name: For error
+        run: echo "Error! Change something"
