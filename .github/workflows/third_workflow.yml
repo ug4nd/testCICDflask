@@ -12,7 +12,7 @@ jobs:
       - name: Copy Files
         run: |
           git init
-          git remote add origin $GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com:ug4nd/$GITHUB_REPOSITORY.git
+          git remote add origin "$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
           git fetch
           git checkout main
       - name: List files
