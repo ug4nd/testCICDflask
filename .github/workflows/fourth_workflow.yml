@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{github.event.workflow_run.conclusion == 'failure'}}
     steps:
-      - name: For error
-        run: echo "Error! Change something"
+      - name: For failure
+        run: echo "Failured! Change something"
