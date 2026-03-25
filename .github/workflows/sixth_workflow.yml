@@ -1,0 +1,22 @@
+
+name: SixthWorkflow
+on:
+  push:
+    branches:
+      - main
+      - "branch*"
+      - "branch/*" #branch/about branch/blog branch/contact
+      - "branch/**" #branch/testing/filters
+    #tags:
+     # - v1.*
+     # - "!v2.*"
+    paths:
+      - "templates/**.html"
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Event arguments Github
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
