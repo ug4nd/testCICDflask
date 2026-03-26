@@ -1,7 +1,7 @@
 name: ElevenWorkflow
 on:
   push
-run-name: "Testing variables"
+run-name: "Testing vars"
 env:
   WF_CUSTOM_VAR: WF 1    
 
@@ -12,7 +12,7 @@ jobs:
     env:
       JOB_CUSTOM_VAR: JOB 1 
     steps:
-      - name: Display new vars first job
+      - name: Vars
         env:
           STEP_CUSTOM_VAR: STEP 1
         run: | 
