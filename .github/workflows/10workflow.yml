@@ -1,0 +1,15 @@
+name: TenhWorkflow
+on:
+  push
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Context and Expressions
+        id: context-expression
+        run: |
+          echo "Var: ${{ toJson(github) }}"
+          echo "Var: ${{ toJson(runner) }}"
+          echo "Var: ${{ toJson(job) }}"
+          echo "Var: ${{ toJson(steps) }}"
