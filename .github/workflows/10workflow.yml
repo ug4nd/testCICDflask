@@ -9,7 +9,7 @@ jobs:
       - name: Context and Expressions
         id: context-expression
         run: |
-          echo "Var: ${{ toJson(github) }}"
-          echo "Var: ${{ toJson(runner) }}"
-          echo "Var: ${{ toJson(job) }}"
-          echo "Var: ${{ toJson(steps) }}"
+          echo "-----------------------------------: ${{ toJson(github) }}"
+          echo "-----------------------------------: ${{ toJson(runner) }}"
+          echo "-----------------------------------: ${{ toJson(job) }}"
+          echo "-----------------------------------: ${{ toJson(steps) }}"
