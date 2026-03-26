@@ -1,7 +1,7 @@
 name: TenhWorkflow
 on:
   push
-run-name: "Display Context Info"
+run-name: "Display Context Info2"
 jobs:
   run-first-command:
     runs-on: ubuntu-latest
@@ -13,3 +13,6 @@ jobs:
           echo "-----------------------------------: ${{ toJson(runner) }}"
           echo "-----------------------------------: ${{ toJson(job) }}"
           echo "-----------------------------------: ${{ toJson(steps) }}"
+      - name: Show steps context
+        run: |
+          echo "${{ toJson(steps) }}" 
