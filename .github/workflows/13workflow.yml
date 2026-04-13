@@ -5,7 +5,9 @@ jobs:
     job:
       runs-on: ubuntu-latest
       steps:
+        
         - name: First step
+          id: error-step
           run: exit 1
         - name: Runs on Cancelled
           if: ${{ cancelled() }}
@@ -17,7 +19,7 @@ jobs:
           if: ${{ success() }}
           run: echo "Runs on success"
         - name: Runs on failure
-          if: ${{ failure() }}
+          if: ${{ failure() && steps.error-step.conclusion == 'failure' }}
           run: echo "Runs on failure"
     second-job:
         runs-on: ubuntu-latest
