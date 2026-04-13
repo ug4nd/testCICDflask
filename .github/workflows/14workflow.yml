@@ -27,4 +27,4 @@ jobs:
           .venv/bin/pip install pytest
       
       - name: Verify
-        run: echo "Cache is ready!"
+        run: echo '${{ steps.cache.outputs }}'
