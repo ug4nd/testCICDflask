@@ -1,21 +1,19 @@
-name: Setup Cache
+name: 14WF
 
-on:
-  push:
-    branches: [ main ]
+on: workflow_dispatch
 
 jobs:
   setup:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.14'
       
-      - uses: actions/cache@v3
+      - uses: actions/cache@v5
         id: cache
         with:
           path: .venv
@@ -29,4 +27,4 @@ jobs:
           .venv/bin/pip install pytest
       
       - name: Verify
-        run: echo "✅ Cache is ready!"
+        run: echo "Cache is ready!"
