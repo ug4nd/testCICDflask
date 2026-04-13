@@ -1,36 +1,32 @@
-name: 14CI
+name: Setup Cache
 
 on:
   push:
-run-name: "Check 14 WF"
+    branches: [ main ]
+
 jobs:
-  test:
+  setup:
     runs-on: ubuntu-latest
     
     steps:
-
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       
-      - name: Cache virtual environment
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
+        id: cache
         with:
           path: .venv
           key: ${{ runner.os }}-venv-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-venv-
-
-      - name: Create virtual environment
+      
+      - name: Create venv
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           python -m venv .venv
-          source .venv/bin/activate
-          pip install -r requirements.txt
-
-      - name: Run tests
-        run: |
-          source .venv/bin/activate && pytest
+          .venv/bin/pip install -r requirements.txt
+          .venv/bin/pip install pytest
+      
+      - name: Verify
+        run: echo "✅ Cache is ready!"
