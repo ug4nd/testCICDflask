@@ -21,7 +21,7 @@ jobs:
             name: math-result
         - name: Print File
           run: |
-            value='cat math-result.txt'
+            value=`cat math-result.txt`
             echo $value
 
 
