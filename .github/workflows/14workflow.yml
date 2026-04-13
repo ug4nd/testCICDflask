@@ -27,4 +27,4 @@ jobs:
           .venv/bin/pip install pytest
       
       - name: Verify
-        run: echo '${{ steps.cache.outputs }}'
+        run: echo '${{ toJson(steps.cache.outputs) }}'
