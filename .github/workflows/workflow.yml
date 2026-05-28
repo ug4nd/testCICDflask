@@ -9,7 +9,7 @@ on:
         required: false
 jobs:
   console-log:
-    runs-on: ubutntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Print title
         run: echo '${{ inputs.title }}'
