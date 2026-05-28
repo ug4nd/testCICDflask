@@ -3,10 +3,22 @@ on: push
 
 jobs:
   testing-maxtrix-job:
+    continue-on-error: true
     strategy:
+      max-parallel: 2
+      fail-fast: false  
       matrix:
         os: [ubuntu-latest, windows-latest]
         node-version: [12,14,18]
+        include:
+          - os: macos-latest
+            node-version: 17
+          - os: ubuntu-latest
+            status: active 
+        exclude:
+          - os: ubuntu-latest
+            node-version: 12
+
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v6
